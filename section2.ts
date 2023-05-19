@@ -16,3 +16,52 @@ number1 = 10
 const number2 = 3
 
 sum(number1,number2,true,"The result is: ")
+
+/*
+const ADMIN = 0
+const READ_ONLY = 1
+const AUTHOR = 2
+*/
+
+enum Role {ADMIN, READ_ONLY, AUTHOR=2}
+
+const person: {
+    name: string,
+    age: number,
+    hobbies: string[],
+    role: [number, string] //tuple
+
+} = {
+    name: 'Perci',
+    age: 34,
+    hobbies: ['Music','Videogames'],
+    role: [Role.AUTHOR, 'author']
+}
+
+console.log(person.name)
+person.role.push('Admin') // js exception
+
+for (let hobby of person.hobbies){
+    console.log(hobby.toUpperCase())
+}
+
+type NumOrStr = number | string
+type Conversion = 'as-number' | 'as-text'
+
+function combine(
+    input1: NumOrStr,
+    input2: NumOrStr,
+    resultConversion: Conversion
+    ){
+        let result;
+        if (typeof(input1) === 'number' && typeof(input2) === 'number' || resultConversion==='as-number'){
+            result = +input1 + +input2
+        } else {
+            result = input1.toString() + input2.toString()
+        }
+        return(result) 
+}
+
+console.log(combine(2,2,'as-number'))
+
+
